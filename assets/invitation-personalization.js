@@ -37,10 +37,20 @@
       var namesEl = document.getElementById("nombres-invitados");
       if (namesEl) namesEl.textContent = formatNames(names);
 
-      // La imagen ya dice "Tenés ___ lugares reservados": solo se completa el número.
+      // La imagen ya trae la frase impresa: solo se completa el número.
+      // Con 1 lugar se usa la versión "Tenés ___ lugar reservado" de la imagen.
       var totalPasses = 1 + companions.length;
       var passesEl = document.getElementById("cantidad-lugares");
       if (passesEl) passesEl.textContent = String(totalPasses);
+
+      if (totalPasses === 1) {
+        var guestsImage = document.getElementById("imagen-invitados");
+        if (guestsImage) {
+          guestsImage.src = "assets/invitados-singular.webp";
+          guestsImage.alt = "Esta invitación es especialmente para vos. Tenés 1 lugar reservado";
+        }
+        if (passesEl) passesEl.classList.add("guest-places--singular");
+      }
 
       var confirmBtn = document.getElementById("boton-confirmar");
       if (confirmBtn && invite.event_slug) {

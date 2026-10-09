@@ -117,9 +117,16 @@ a {
   width: 14.5%;
   height: 5.4%;
   place-items: center;
-  font-size: 9.2cqw;
+  font-family: "Playfair Display", "Bodoni Moda", Georgia, serif;
+  font-size: 9cqw;
+  font-variant-numeric: lining-nums;
   font-weight: 500;
   line-height: 1;
+}
+
+/* En la imagen "lugar reservado" la línea es más corta y se recentró 38px. */
+.guest-places--singular {
+  left: 30.44%;
 }
 
 /* Cuenta regresiva: tapa los "00" impresos y escribe los valores reales encima. */
