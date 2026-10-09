@@ -389,3 +389,36 @@ audioToggle.addEventListener("click", () => {
 
 invitationAudio.addEventListener("play", () => syncAudioControl(true));
 invitationAudio.addEventListener("pause", () => syncAudioControl(false));
+
+/* Intro: entrar con o sin música. */
+function setupInvitationIntro() {
+  const intro = document.querySelector(".invitation-intro");
+  const main = document.querySelector("#invitationMain");
+  if (!intro) return;
+
+  let leaving = false;
+
+  const enter = (withMusic) => {
+    if (leaving) return;
+    leaving = true;
+    intro.querySelectorAll("button").forEach((button) => {
+      button.disabled = true;
+    });
+
+    // Se llama dentro del toque para que los celulares permitan reproducir.
+    if (withMusic) startInvitationAudio();
+
+    intro.classList.add("is-leaving");
+    window.setTimeout(() => {
+      document.body.classList.remove("intro-is-open");
+      intro.remove();
+      window.scrollTo(0, 0);
+      main?.focus({ preventScroll: true });
+    }, reducedMotion ? 260 : 900);
+  };
+
+  intro.querySelector("#introWithMusic")?.addEventListener("click", () => enter(true));
+  intro.querySelector("#introWithoutMusic")?.addEventListener("click", () => enter(false));
+}
+
+setupInvitationIntro();

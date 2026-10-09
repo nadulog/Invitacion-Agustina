@@ -759,3 +759,109 @@ a {
     animation: none;
   }
 }
+
+/* Intro: pantalla de bienvenida para entrar con o sin música. */
+body.intro-is-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.invitation-intro {
+  position: fixed;
+  z-index: 900;
+  inset: 0;
+  display: grid;
+  height: 100vh;
+  height: 100dvh;
+  place-items: center;
+  overflow: hidden;
+  background: #0b090a;
+}
+
+.invitation-intro__stage {
+  position: relative;
+  width: min(100vw, 56.28vh);
+  width: min(100vw, 56.28dvh);
+  aspect-ratio: 941 / 1672;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgb(244 114 163 / 18%);
+}
+
+.invitation-intro__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.intro-action {
+  position: absolute;
+  z-index: 3;
+  left: 15.9%;
+  width: 68.2%;
+  height: 6.4%;
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.intro-action--music {
+  top: 66.35%;
+}
+
+.intro-action--silent {
+  top: 74.45%;
+}
+
+.intro-action:hover {
+  background: rgb(255 255 255 / 10%);
+}
+
+.intro-action:focus-visible {
+  outline: 3px solid #f472a3;
+  outline-offset: 3px;
+}
+
+.intro-action:disabled {
+  cursor: default;
+}
+
+.invitation-intro.is-leaving {
+  animation: intro-leave 900ms ease forwards;
+}
+
+.invitation-intro.is-leaving .invitation-intro__stage {
+  animation: intro-stage-leave 900ms ease forwards;
+}
+
+@keyframes intro-leave {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes intro-stage-leave {
+  to {
+    transform: scale(1.06);
+  }
+}
+
+body.intro-is-open .audio-toggle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invitation-intro.is-leaving {
+    animation-duration: 250ms;
+  }
+
+  .invitation-intro.is-leaving .invitation-intro__stage {
+    animation: none;
+  }
+}

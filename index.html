@@ -37,10 +37,29 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Playfair+Display:wght@500&display=swap"
     />
-    <link rel="preload" as="image" href="assets/portada.webp" fetchpriority="high" />
-    <link rel="stylesheet" href="styles.css?v=20261009-10" />
+    <link rel="preload" as="image" href="assets/intro-agus.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/portada.webp" />
+    <link rel="stylesheet" href="styles.css?v=20261009-11" />
   </head>
-  <body>
+  <body class="intro-is-open">
+    <div class="invitation-intro" role="dialog" aria-modal="true" aria-label="Bienvenida a los XV de Agus">
+      <div class="invitation-intro__stage">
+        <img
+          class="invitation-intro__image"
+          src="assets/intro-agus.webp"
+          alt="Agus, mis XV, 31 de octubre de 2026. ¿Cómo querés entrar?"
+          width="941"
+          height="1672"
+        />
+        <button id="introWithMusic" class="intro-action intro-action--music" type="button">
+          <span class="sr-only">Entrar con música</span>
+        </button>
+        <button id="introWithoutMusic" class="intro-action intro-action--silent" type="button">
+          <span class="sr-only">Entrar sin música</span>
+        </button>
+      </div>
+    </div>
+
     <main id="invitationMain" class="invitation" tabindex="-1" aria-label="Invitación a los XV años de Agus">
       <section class="panel panel--cover" aria-labelledby="cover-title">
         <h1 id="cover-title" class="sr-only">Mis XV, Agus</h1>
@@ -351,7 +370,7 @@
     </button>
     <audio id="invitationAudio" src="assets/musica.mp3" loop preload="metadata"></audio>
 
-    <script src="script.js?v=20261009-6"></script>
+    <script src="script.js?v=20261009-7"></script>
     <script src="assets/invitation-personalization.js?v=20261009-4"></script>
   </body>
 </html>
