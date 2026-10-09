@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="theme-color" content="#f3c4d4" />
+    <meta
+      name="description"
+      content="Te invito a celebrar mis XV. Será una noche muy especial y quiero compartirla con vos. ✨"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Mis XV · Agus" />
+    <meta property="og:title" content="Mis XV · Agus" />
+    <meta
+      property="og:description"
+      content="Te invito a celebrar mis XV. Será una noche muy especial y quiero compartirla con vos. ✨"
+    />
+    <meta property="og:image" content="assets/portada.webp" />
+    <title>Mis XV · Agus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&display=swap"
+    />
+    <link rel="preload" as="image" href="assets/portada.webp" fetchpriority="high" />
+    <link rel="stylesheet" href="styles.css?v=20261009-3" />
+  </head>
+  <body>
+    <main id="invitationMain" class="invitation" tabindex="-1" aria-label="Invitación a los XV años de Agus">
+      <section class="panel panel--cover" aria-labelledby="cover-title">
+        <h1 id="cover-title" class="sr-only">Mis XV, Agus</h1>
+        <img
+          src="assets/portada.webp"
+          alt="Agus, mis XV"
+          width="941"
+          height="1672"
+          fetchpriority="high"
+        />
+      </section>
+
+      <section class="panel panel--guests" aria-labelledby="guests-title">
+        <h2 id="guests-title" class="sr-only">Invitación personalizada</h2>
+        <img
+          src="assets/invitados.webp"
+          alt="Esta invitación es especialmente para vos. Tenés lugares reservados"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <p id="nombres-invitados" class="guest-name"></p>
+        <p id="cantidad-lugares" class="guest-places"></p>
+      </section>
+
+      <section class="panel panel--countdown" aria-labelledby="countdown-title">
+        <h2 id="countdown-title" class="sr-only">Cuenta regresiva</h2>
+        <img
+          src="assets/cuenta-regresiva.webp"
+          alt="Falta poco para mi gran noche"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <div class="countdown" role="timer" aria-live="off" aria-label="Tiempo restante para la fiesta">
+          <span id="days" class="countdown__value countdown__value--days">00</span>
+          <span id="hours" class="countdown__value countdown__value--hours">00</span>
+          <span id="minutes" class="countdown__value countdown__value--minutes">00</span>
+          <span id="seconds" class="countdown__value countdown__value--seconds">00</span>
+        </div>
+      </section>
+
+      <section class="panel panel--date" aria-labelledby="date-title">
+        <h2 id="date-title" class="sr-only">Fecha y hora</h2>
+        <img
+          src="assets/fecha-hora.webp"
+          alt="31 de octubre de 2026, de 21:00 a 05:00 horas"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <button id="calendarButton" class="hotspot hotspot--calendar" type="button">
+          <span class="sr-only">Agregar el evento al calendario</span>
+        </button>
+
+        <div class="date-reveal" id="dateReveal" aria-label="Deslizá varias veces para descubrir la fecha">
+          <canvas class="date-reveal__canvas" id="dateRevealCanvas" aria-hidden="true"></canvas>
+          <div class="date-reveal__copy">
+            <span class="date-reveal__star date-reveal__star--one" aria-hidden="true"></span>
+            <span class="date-reveal__star date-reveal__star--two" aria-hidden="true"></span>
+            <span class="date-reveal__star date-reveal__star--three" aria-hidden="true"></span>
+            <p>DESLIZÁ PARA DESCUBRIR</p>
+            <span>Pasá el dedo varias veces</span>
+            <div class="date-reveal__gesture" aria-hidden="true">
+              <svg class="date-reveal__gesture-trace" viewBox="0 0 190 76" preserveAspectRatio="none">
+                <path d="M154 10 C42 8 34 30 94 37 C156 44 150 68 36 66" />
+              </svg>
+              <img src="assets/date-reveal-hand.png" alt="" />
+            </div>
+            <button id="dateRevealButton" type="button">REVELAR FECHA</button>
+          </div>
+        </div>
+
+        <div class="date-magic" id="dateMagic" aria-hidden="true">
+          <span style="--angle: -12deg; --distance: 92px"></span>
+          <span style="--angle: 24deg; --distance: 76px"></span>
+          <span style="--angle: 61deg; --distance: 104px"></span>
+          <span style="--angle: 108deg; --distance: 82px"></span>
+          <span style="--angle: 154deg; --distance: 98px"></span>
+          <span style="--angle: 203deg; --distance: 78px"></span>
+          <span style="--angle: 246deg; --distance: 106px"></span>
+          <span style="--angle: 302deg; --distance: 88px"></span>
+        </div>
+      </section>
+
+      <section class="panel panel--map" aria-labelledby="map-title">
+        <h2 id="map-title" class="sr-only">Cómo llegar</h2>
+        <img
+          src="assets/como-llegar.webp"
+          alt="Nos encontramos en Jano's Vicente López"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <button id="openMapModal" class="hotspot hotspot--map" type="button">
+          <span class="sr-only">Ver opciones para llegar</span>
+        </button>
+      </section>
+
+      <section class="panel panel--dress-code" aria-labelledby="dress-code-title">
+        <h2 id="dress-code-title" class="sr-only">Código de vestimenta</h2>
+        <img
+          src="assets/dress-code.webp"
+          alt="Dress code elegante. Se reserva el color rosa y verde"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+      </section>
+
+      <section class="panel panel--gifts" aria-labelledby="gifts-title">
+        <h2 id="gifts-title" class="sr-only">Regalos</h2>
+        <img
+          src="assets/regalos.webp"
+          alt="Tu presencia es lo más importante. Si querés hacerme un regalo, ver más"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <button id="openGiftsModal" class="hotspot hotspot--gifts" type="button">
+          <span class="sr-only">Ver datos para regalo</span>
+        </button>
+      </section>
+
+      <section class="panel panel--music" aria-labelledby="music-title">
+        <h2 id="music-title" class="sr-only">Música</h2>
+        <img
+          src="assets/musica.webp"
+          alt="Armemos juntos la playlist de mi fiesta. Agregá esa canción que no puede faltar"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <!-- PENDIENTE: link de la playlist de Spotify -->
+        <a
+          class="hotspot hotspot--music"
+          href="#"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="sr-only">Agregar canción a la playlist</span>
+        </a>
+      </section>
+
+      <section class="panel panel--bloomkeep" aria-labelledby="bloomkeep-title">
+        <h2 id="bloomkeep-title" class="sr-only">BloomKeep</h2>
+        <img
+          src="assets/bloomkeep.webp"
+          alt="BloomKeep: entrá y compartí tus fotos y mensajes y reviví cada momento"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <!-- PENDIENTE: confirmar link de BloomKeep -->
+        <a
+          class="hotspot hotspot--bloomkeep-phone"
+          href="https://app.bloomkeep.site/agus-15"
+          target="_blank"
+          rel="noreferrer"
+          tabindex="-1"
+          aria-hidden="true"
+        ></a>
+        <a
+          class="hotspot hotspot--bloomkeep"
+          href="https://app.bloomkeep.site/agus-15"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="sr-only">Ingresar a BloomKeep</span>
+        </a>
+      </section>
+
+      <section class="panel panel--confirmation" aria-labelledby="confirmation-title">
+        <h2 id="confirmation-title" class="sr-only">Confirmación de asistencia</h2>
+        <img
+          src="assets/confirmacion.webp"
+          alt="¿Venís? Quiero festejar esta noche con vos. Confirmar asistencia"
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+        <a
+          id="boton-confirmar"
+          class="hotspot hotspot--confirmation"
+          aria-label="Confirmar asistencia"
+          aria-disabled="true"
+        >
+          <span class="sr-only">Confirmar asistencia</span>
+        </a>
+      </section>
+
+      <section class="panel panel--photo" aria-labelledby="photo-title">
+        <h2 id="photo-title" class="sr-only">Te espero</h2>
+        <img
+          src="assets/foto-agus.webp"
+          alt="Te espero, Agus"
+          width="941"
+          height="1671"
+          loading="lazy"
+        />
+      </section>
+
+      <footer class="panel panel--footer" aria-label="BloomDate y redes sociales">
+        <img
+          src="assets/footer-bloomdate.webp"
+          alt="Hecho con amor por BloomDate. WhatsApp, Instagram y sitio web"
+          width="1672"
+          height="941"
+          loading="lazy"
+        />
+        <a
+          class="footer-link footer-link--whatsapp"
+          href="https://wa.me/541140436324"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Contactar a BloomDate por WhatsApp"
+        ></a>
+        <a
+          class="footer-link footer-link--instagram"
+          href="https://www.instagram.com/bloomdate.invitaciones/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Ver BloomDate Invitaciones en Instagram"
+        ></a>
+        <a
+          class="footer-link footer-link--website"
+          href="https://bloomdate-site.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Visitar el sitio web de BloomDate"
+        ></a>
+      </footer>
+    </main>
+
+    <dialog id="mapModal" class="image-modal image-modal--map" aria-label="Opciones para llegar a Jano's Vicente López">
+      <div class="modal-art">
+        <img
+          src="assets/modal-ubicacion.webp"
+          alt="Jano's Vicente López, Av. del Libertador 16880, Vicente López, Buenos Aires"
+          width="941"
+          height="1672"
+        />
+        <a
+          class="modal-action modal-action--maps"
+          href="https://maps.app.goo.gl/6giriT1uhm6a98pt5?g_st=aw"
+          target="_blank"
+          rel="noreferrer"
+        ><span class="sr-only">Abrir con Google Maps</span></a>
+        <a
+          class="modal-action modal-action--waze"
+          href="https://www.waze.com/ul?q=Av.%20del%20Libertador%2016880%2C%20Buenos%20Aires&amp;navigate=yes"
+          target="_blank"
+          rel="noreferrer"
+        ><span class="sr-only">Abrir con Waze</span></a>
+        <button
+          class="modal-action modal-action--copy-address"
+          type="button"
+          data-copy="Av. del Libertador 16880, Vicente López, Buenos Aires"
+          data-copy-message="Dirección copiada"
+        ><span class="sr-only">Copiar dirección</span></button>
+        <button class="modal-action modal-action--close-map" type="button" data-close-modal>
+          <span class="sr-only">Cerrar</span>
+        </button>
+        <p class="modal-toast" aria-live="polite"></p>
+      </div>
+    </dialog>
+
+    <dialog id="giftsModal" class="image-modal image-modal--gifts" aria-label="Datos para regalo">
+      <div class="modal-art">
+        <img
+          src="assets/modal-regalos.webp"
+          alt="Datos para tu regalo: alias tina.bugatti, titular Agustina Bugatti, entidad Mercado Pago"
+          width="1024"
+          height="1536"
+        />
+        <button
+          class="modal-action modal-action--copy-alias"
+          type="button"
+          data-copy="tina.bugatti"
+          data-copy-message="Alias copiado"
+        ><span class="sr-only">Copiar alias tina.bugatti</span></button>
+        <button class="modal-action modal-action--close-gifts" type="button" data-close-modal>
+          <span class="sr-only">Cerrar</span>
+        </button>
+        <p class="modal-toast" aria-live="polite"></p>
+      </div>
+    </dialog>
+
+    <script src="script.js?v=20261009-3"></script>
+    <script src="assets/invitation-personalization.js?v=20261009-1"></script>
+  </body>
+</html>

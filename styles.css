@@ -1,0 +1,645 @@
+:root {
+  color-scheme: light;
+  font-family: "Bodoni Moda", Didot, "Bodoni 72", Georgia, "Times New Roman", serif;
+  background: #f3c4d4;
+  color: #111;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background:
+    linear-gradient(90deg, rgba(120, 30, 70, 0.12), transparent 20% 80%, rgba(120, 30, 70, 0.12)),
+    #f3c4d4;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.invitation {
+  width: min(100%, 590px);
+  margin-inline: auto;
+  overflow: hidden;
+  background: #fdeff3;
+  box-shadow: 0 0 42px rgba(90, 20, 50, 0.22);
+}
+
+.panel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 941 / 1672;
+  overflow: hidden;
+  background: #fdeff3;
+  container-type: inline-size;
+}
+
+.panel > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.panel--footer {
+  aspect-ratio: 1672 / 941;
+}
+
+.footer-link {
+  position: absolute;
+  z-index: 2;
+  top: 54.8%;
+  width: 6.9%;
+  height: 12.3%;
+}
+
+.footer-link--whatsapp {
+  left: 36.7%;
+}
+
+.footer-link--instagram {
+  left: 46.6%;
+}
+
+.footer-link--website {
+  left: 56.5%;
+}
+
+.footer-link:focus-visible {
+  outline: 3px solid #b0305f;
+  outline-offset: 2px;
+}
+
+/* Invitados: nombre en el espacio central y número dentro de "Tenés __ lugares". */
+.guest-name,
+.guest-places {
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  color: #111;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.55);
+}
+
+.guest-name {
+  top: 29%;
+  left: 10%;
+  display: grid;
+  width: 80%;
+  height: 22%;
+  place-items: center;
+  font-size: 9.5cqw;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.guest-places {
+  top: 54.4%;
+  left: 26.4%;
+  display: grid;
+  width: 14.5%;
+  height: 5.4%;
+  place-items: center;
+  font-size: 9.2cqw;
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* Cuenta regresiva: tapa los "00" impresos y escribe los valores reales encima. */
+.countdown {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+}
+
+.countdown__value {
+  position: absolute;
+  top: 65.9%;
+  display: grid;
+  width: 16.6%;
+  height: 6.6%;
+  place-items: center;
+  background: #fdeff3;
+  box-shadow: 0 0 0.6cqw 0.6cqw #fdeff3;
+  color: #0c0c0c;
+  font-size: 13cqw;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  /* Estira los dígitos para igualar la tipografía condensada del diseño. */
+  transform: scaleY(1.25);
+}
+
+
+.countdown__value--days {
+  left: 7.2%;
+}
+
+.countdown__value--hours {
+  left: 30.4%;
+}
+
+.countdown__value--minutes {
+  left: 53.4%;
+}
+
+.countdown__value--seconds {
+  left: 76.6%;
+}
+
+.hotspot {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hotspot::after {
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: inherit;
+  content: "";
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.hotspot:hover::after {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(176, 48, 95, 0.25);
+}
+
+.hotspot:focus-visible {
+  outline: 3px solid #b0305f;
+  outline-offset: 3px;
+}
+
+.hotspot--calendar {
+  top: 88.6%;
+  left: 7.1%;
+  width: 52.6%;
+  height: 5%;
+}
+
+.hotspot--map {
+  top: 70.7%;
+  left: 6.8%;
+  width: 41.8%;
+  height: 5.9%;
+}
+
+.hotspot--gifts {
+  top: 85.7%;
+  left: 12.2%;
+  width: 75.8%;
+  height: 6.7%;
+}
+
+.hotspot--music {
+  top: 42.9%;
+  left: 7.2%;
+  width: 50.3%;
+  height: 4.4%;
+}
+
+.hotspot--bloomkeep-phone {
+  top: 41.9%;
+  left: 37%;
+  width: 26.2%;
+  height: 4.1%;
+  border-radius: 999px;
+}
+
+.hotspot--bloomkeep {
+  top: 82.8%;
+  left: 27.9%;
+  width: 45.2%;
+  height: 5.7%;
+  border-radius: 999px;
+}
+
+.hotspot--confirmation {
+  top: 62.6%;
+  left: 21.8%;
+  width: 57%;
+  height: 5.3%;
+}
+
+.hotspot--confirmation[aria-disabled="true"] {
+  pointer-events: none;
+}
+
+.image-modal {
+  width: fit-content;
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+
+.image-modal::backdrop {
+  background: rgb(60 20 38 / 70%);
+  backdrop-filter: blur(3px);
+}
+
+.modal-art {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2.5%;
+  box-shadow: 0 16px 48px rgb(50 15 30 / 38%);
+}
+
+.image-modal--map .modal-art {
+  width: min(92vw, 50.6vh, 460px);
+  width: min(92vw, 50.6dvh, 460px);
+}
+
+.image-modal--gifts .modal-art {
+  width: min(94vw, 60vh, 520px);
+  width: min(94vw, 60dvh, 520px);
+}
+
+.modal-art > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.modal-action {
+  position: absolute;
+  display: block;
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.modal-action:focus-visible {
+  outline: 3px solid #b0305f;
+  outline-offset: 2px;
+  background: rgb(255 255 255 / 14%);
+}
+
+.modal-action--maps,
+.modal-action--waze,
+.modal-action--copy-address {
+  left: 8.6%;
+  width: 63.7%;
+  height: 6%;
+}
+
+.modal-action--maps {
+  top: 50.2%;
+}
+
+.modal-action--waze {
+  top: 57.8%;
+}
+
+.modal-action--copy-address {
+  top: 65.4%;
+}
+
+.modal-action--close-map {
+  top: 6.3%;
+  left: 84.1%;
+  width: 10.6%;
+  height: 6%;
+  border-radius: 50%;
+}
+
+.modal-action--copy-alias {
+  top: 37.4%;
+  left: 58.6%;
+  width: 26.5%;
+  height: 4.8%;
+  border-radius: 999px;
+}
+
+.modal-action--close-gifts {
+  top: 14%;
+  left: 81%;
+  width: 7.3%;
+  height: 5.1%;
+  border-radius: 50%;
+}
+
+.modal-toast {
+  position: absolute;
+  z-index: 2;
+  top: 4%;
+  left: 50%;
+  max-width: 80%;
+  margin: 0;
+  padding: 0.55em 1em;
+  border-radius: 999px;
+  background: rgb(176 48 95 / 92%);
+  color: #fff7fa;
+  font-family: Arial, sans-serif;
+  font-size: clamp(0.8rem, 3.2vw, 1rem);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.modal-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hotspot::after,
+  .modal-toast {
+    transition: none;
+  }
+}
+
+/* Raspadita de fecha (mismo efecto que la invitación de Vicky). */
+.panel--date > img {
+  transform-origin: 50% 40%;
+}
+
+.date-reveal {
+  position: absolute;
+  z-index: 30;
+  overflow: hidden;
+  background: #fefefe;
+  inset: 0;
+  touch-action: none;
+  user-select: none;
+}
+
+.date-reveal.is-initialized {
+  background: transparent;
+}
+
+.date-reveal[hidden] {
+  display: none;
+}
+
+.date-reveal__canvas {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  cursor: ew-resize;
+}
+
+.date-reveal__copy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  width: 86%;
+  translate: -50% -50%;
+  color: #111;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+.date-reveal.is-scratching .date-reveal__copy {
+  opacity: 0.28;
+  transform: scale(0.98);
+}
+
+.date-reveal__copy p {
+  margin: 0;
+  font-size: 5.6cqw;
+  letter-spacing: 0.17em;
+}
+
+.date-reveal__copy > span:not(.date-reveal__star) {
+  margin-top: 12px;
+  font-size: 3.9cqw;
+  font-style: italic;
+  letter-spacing: 0.06em;
+}
+
+.date-reveal__gesture {
+  position: relative;
+  width: min(190px, 54%);
+  height: 76px;
+  margin-top: 22px;
+  transition: opacity 180ms ease;
+}
+
+.date-reveal__gesture-trace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  overflow: visible;
+  fill: none;
+  stroke: rgb(5 5 5 / 22%);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+}
+
+.date-reveal__gesture > img {
+  position: absolute;
+  top: -19px;
+  left: -19px;
+  width: 44px;
+  height: auto;
+  offset-path: path("M154 10 C42 8 34 30 94 37 C156 44 150 68 36 66");
+  offset-rotate: 0deg;
+  animation: date-gesture-swipe 2.2s ease-in-out infinite;
+}
+
+.date-reveal.has-interacted .date-reveal__gesture,
+.date-reveal.is-scratching .date-reveal__gesture {
+  opacity: 0;
+}
+
+@keyframes date-gesture-swipe {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+
+  10%,
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+.date-reveal__copy button {
+  margin-top: 24px;
+  padding: 10px 16px;
+  border: 0;
+  border-bottom: 1px solid #111;
+  background: transparent;
+  color: #111;
+  font-family: Arial, sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.date-reveal__star,
+.date-magic span {
+  position: absolute;
+  width: 15px;
+  aspect-ratio: 1;
+  background: #111;
+  clip-path: polygon(50% 0, 57% 41%, 100% 50%, 57% 59%, 50% 100%, 43% 59%, 0 50%, 43% 41%);
+}
+
+.date-magic span {
+  background: #f472a3;
+}
+
+.date-reveal__star--one {
+  top: -70px;
+  left: 8%;
+}
+
+.date-reveal__star--two {
+  top: -32px;
+  right: 4%;
+  width: 10px;
+}
+
+.date-reveal__star--three {
+  right: 16%;
+  bottom: -70px;
+  width: 12px;
+}
+
+.date-reveal.is-finishing {
+  pointer-events: none;
+  animation: date-cover-out 360ms ease-in forwards;
+}
+
+.date-magic {
+  position: absolute;
+  top: 30%;
+  left: 42%;
+  z-index: 35;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.date-magic span {
+  top: -7px;
+  left: -7px;
+  opacity: 0;
+}
+
+.date-magic.is-active span {
+  animation: date-magic-star 640ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.panel--date.is-revealed > img {
+  animation: date-image-enter 720ms 80ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes date-cover-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes date-magic-star {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(0) scale(0.35);
+  }
+
+  28% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(var(--distance)) scale(1.05);
+  }
+}
+
+@keyframes date-image-enter {
+  from {
+    opacity: 0;
+    scale: 0.94;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .date-magic {
+    display: none;
+  }
+
+  .date-reveal__gesture > img {
+    animation: none;
+    offset-distance: 50%;
+  }
+
+  .panel--date.is-revealed > img {
+    animation: date-simple-fade 260ms ease-out both;
+  }
+
+  @keyframes date-simple-fade {
+    from {
+      opacity: 0;
+    }
+  }
+}
