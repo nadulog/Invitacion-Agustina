@@ -331,3 +331,61 @@ if (dateWasRevealed) {
   dateReveal.addEventListener("pointercancel", releaseDatePointer);
   dateRevealButton.addEventListener("click", completeDateReveal);
 }
+
+/* Música: botón flotante para reproducir y pausar. */
+const audioToggle = document.querySelector("#audioToggle");
+const invitationAudio = document.querySelector("#invitationAudio");
+let audioFadeFrame = 0;
+
+function syncAudioControl(isPlaying) {
+  audioToggle.classList.toggle("is-playing", isPlaying);
+  audioToggle.setAttribute("aria-pressed", String(isPlaying));
+  audioToggle.setAttribute("aria-label", isPlaying ? "Pausar música" : "Reproducir música");
+}
+
+function fadeAudioTo(targetVolume = 0.6, duration = 1600) {
+  window.cancelAnimationFrame(audioFadeFrame);
+  const startedAt = performance.now();
+  const startingVolume = invitationAudio.volume;
+
+  function step(now) {
+    const progress = Math.min(1, (now - startedAt) / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    invitationAudio.volume = startingVolume + (targetVolume - startingVolume) * eased;
+    if (progress < 1) audioFadeFrame = window.requestAnimationFrame(step);
+  }
+
+  audioFadeFrame = window.requestAnimationFrame(step);
+}
+
+async function startInvitationAudio() {
+  window.cancelAnimationFrame(audioFadeFrame);
+  invitationAudio.volume = 0.05;
+
+  try {
+    await invitationAudio.play();
+    fadeAudioTo();
+  } catch {
+    syncAudioControl(false);
+  }
+}
+
+// El botón solo aparece si el archivo de música existe (en iPhone el audio no se
+// precarga hasta que se toca la pantalla, por eso se consulta el archivo directamente).
+fetch(invitationAudio.src, { method: "HEAD" })
+  .then((response) => {
+    if (response.ok) audioToggle.hidden = false;
+  })
+  .catch(() => {});
+
+audioToggle.addEventListener("click", () => {
+  if (invitationAudio.paused) {
+    startInvitationAudio();
+  } else {
+    window.cancelAnimationFrame(audioFadeFrame);
+    invitationAudio.pause();
+  }
+});
+
+invitationAudio.addEventListener("play", () => syncAudioControl(true));
+invitationAudio.addEventListener("pause", () => syncAudioControl(false));

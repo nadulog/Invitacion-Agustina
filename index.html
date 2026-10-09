@@ -38,7 +38,7 @@
       href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Playfair+Display:wght@500&display=swap"
     />
     <link rel="preload" as="image" href="assets/portada.webp" fetchpriority="high" />
-    <link rel="stylesheet" href="styles.css?v=20261009-8" />
+    <link rel="stylesheet" href="styles.css?v=20261009-10" />
   </head>
   <body>
     <main id="invitationMain" class="invitation" tabindex="-1" aria-label="Invitación a los XV años de Agus">
@@ -338,7 +338,20 @@
       </div>
     </dialog>
 
-    <script src="script.js?v=20261009-4"></script>
+    <button
+      id="audioToggle"
+      class="audio-toggle"
+      type="button"
+      aria-label="Reproducir música"
+      aria-pressed="false"
+      hidden
+    >
+      <span class="audio-toggle__note" aria-hidden="true">♫</span>
+      <span class="audio-toggle__state" aria-hidden="true"></span>
+    </button>
+    <audio id="invitationAudio" src="assets/musica.mp3" loop preload="metadata"></audio>
+
+    <script src="script.js?v=20261009-6"></script>
     <script src="assets/invitation-personalization.js?v=20261009-4"></script>
   </body>
 </html>

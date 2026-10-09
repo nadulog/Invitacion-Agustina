@@ -671,3 +671,91 @@ a {
     }
   }
 }
+
+/* Botón flotante de música. */
+.audio-toggle {
+  position: fixed;
+  z-index: 850;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  display: grid;
+  width: 56px;
+  aspect-ratio: 1;
+  padding: 0;
+  place-items: center;
+  border: 1.5px solid #f472a3;
+  border-radius: 50%;
+  background: rgb(14 12 13 / 92%);
+  box-shadow: 0 5px 16px rgb(90 20 50 / 32%);
+  color: #f9a8c8;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.audio-toggle[hidden] {
+  display: none;
+}
+
+.audio-toggle:hover {
+  transform: scale(1.06);
+}
+
+.audio-toggle:focus-visible {
+  outline: 3px solid #f472a3;
+  outline-offset: 3px;
+}
+
+.audio-toggle__note {
+  font: 700 1.7rem/1 Georgia, serif;
+  transform: translate(-2px, -1px);
+}
+
+.audio-toggle.is-playing .audio-toggle__note {
+  animation: audio-note-pulse 1.15s ease-in-out infinite;
+}
+
+.audio-toggle__state {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #0e0c0d;
+  border-radius: 50%;
+  background: #f472a3;
+}
+
+/* Triángulo de play cuando está pausada. */
+.audio-toggle__state::before {
+  position: absolute;
+  top: 3.5px;
+  left: 5px;
+  width: 0;
+  height: 0;
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  border-left: 5px solid #0e0c0d;
+  content: "";
+}
+
+/* Dos barras de pausa cuando suena. */
+.audio-toggle.is-playing .audio-toggle__state::before {
+  top: 3.5px;
+  left: 3.5px;
+  width: 6px;
+  height: 7px;
+  border: 0;
+  background: linear-gradient(90deg, #0e0c0d 0 2px, transparent 2px 4px, #0e0c0d 4px 6px);
+}
+
+@keyframes audio-note-pulse {
+  0%, 100% { transform: translate(-2px, -1px) scale(1); }
+  50% { transform: translate(-2px, -1px) scale(1.13); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-toggle.is-playing .audio-toggle__note {
+    animation: none;
+  }
+}
