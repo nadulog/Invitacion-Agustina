@@ -37,6 +37,8 @@ a {
   overflow: hidden;
   background: #fdeff3;
   box-shadow: 0 0 42px rgba(90, 20, 50, 0.22);
+  container-type: inline-size;
+  --blend: 14cqw;
 }
 
 .panel {
@@ -46,6 +48,21 @@ a {
   overflow: hidden;
   background: #fdeff3;
   container-type: inline-size;
+}
+
+/* Fundido entre secciones: cada imagen se superpone a la anterior y entra con un
+   degradé, así no se ven las líneas de corte entre piezas. */
+.panel + .panel {
+  margin-top: calc(var(--blend) * -1);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--blend));
+  mask-image: linear-gradient(to bottom, transparent 0, #000 var(--blend));
+  pointer-events: none;
+}
+
+.panel + .panel a,
+.panel + .panel button,
+.panel + .panel .date-reveal {
+  pointer-events: auto;
 }
 
 .panel > img {
@@ -58,6 +75,10 @@ a {
 
 .panel--footer {
   aspect-ratio: 1672 / 941;
+}
+
+.panel--photo-bw {
+  aspect-ratio: 960 / 1280;
 }
 
 .footer-link {
