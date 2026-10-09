@@ -34,7 +34,7 @@ function downloadCalendarEvent() {
     `DTSTART:${toIcsDate(EVENT_START)}`,
     `DTEND:${toIcsDate(EVENT_END)}`,
     "SUMMARY:XV de Agus",
-    "LOCATION:Jano's Vicente López\\, Av. del Libertador 16880\\, Vicente López\\, Buenos Aires",
+    "LOCATION:Jano's Vicente López\\, Hipólito Yrigoyen 803\\, Vicente López\\, Buenos Aires",
     "DESCRIPTION:Celebramos los XV años de Agus.",
     "END:VEVENT",
     "END:VCALENDAR",
